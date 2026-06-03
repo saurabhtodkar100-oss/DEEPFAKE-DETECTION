@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="0 0 1600 1100" role="img" aria-labelledby="title desc">
+  <title id="title">Deepfake Detection Portal Project Overview</title>
+  <desc id="desc">Report infographic summarizing the Deepfake Detection Portal architecture, pipeline, outputs, and current evaluation snapshot.</desc>
+  <defs>
+    <linearGradient id="heroGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#163b67" />
+      <stop offset="100%" stop-color="#255d96" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f4a261" />
+      <stop offset="100%" stop-color="#e76f51" />
+    </linearGradient>
+    <style>
+      .page { fill: #f6f8fb; }
+      .panel { fill: #ffffff; stroke: #d9e1ec; stroke-width: 2; }
+      .panel-soft { fill: #f9fbfe; stroke: #d9e1ec; stroke-width: 2; }
+      .hero { fill: url(#heroGrad); }
+      .accent { fill: url(#accentGrad); }
+      .pill { fill: rgba(255, 255, 255, 0.16); stroke: rgba(255, 255, 255, 0.20); stroke-width: 1.5; }
+      .line { fill: none; stroke: #7c98b8; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+      .subline { fill: none; stroke: #adc0d7; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+      .title { font-family: Arial, sans-serif; font-size: 54px; font-weight: 700; fill: #ffffff; }
+      .subtitle { font-family: Arial, sans-serif; font-size: 24px; fill: #d8e7f6; }
+      .pill-text { font-family: Arial, sans-serif; font-size: 18px; font-weight: 700; fill: #ffffff; text-anchor: middle; }
+      .section { font-family: Arial, sans-serif; font-size: 22px; font-weight: 700; fill: #294563; }
+      .heading { font-family: Arial, sans-serif; font-size: 32px; font-weight: 700; fill: #1a2f47; }
+      .body { font-family: Arial, sans-serif; font-size: 21px; fill: #40576f; }
+      .small { font-family: Arial, sans-serif; font-size: 18px; fill: #57708b; }
+      .metric-num { font-family: Arial, sans-serif; font-size: 42px; font-weight: 700; fill: #173a63; text-anchor: middle; }
+      .metric-label { font-family: Arial, sans-serif; font-size: 18px; font-weight: 700; fill: #59728d; text-anchor: middle; }
+      .node-title { font-family: Arial, sans-serif; font-size: 23px; font-weight: 700; fill: #17334f; text-anchor: middle; }
+      .node-body { font-family: Arial, sans-serif; font-size: 17px; fill: #47627d; text-anchor: middle; }
+      .foot { font-family: Arial, sans-serif; font-size: 19px; fill: #526b84; }
+      .mono { font-family: Consolas, "Courier New", monospace; font-size: 18px; fill: #294563; }
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#7c98b8" />
+    </marker>
+  </defs>
+
+  <rect class="page" x="0" y="0" width="1600" height="1100" />
+
+  <rect class="hero" x="44" y="36" width="1512" height="198" rx="28" ry="28" />
+  <circle cx="1390" cy="95" r="84" fill="rgba(255,255,255,0.08)" />
+  <circle cx="1480" cy="184" r="54" fill="rgba(255,255,255,0.07)" />
+  <text class="title" x="92" y="115">Deepfake Detection Portal</text>
+  <text class="subtitle" x="92" y="157">Project overview graphic for report submission: workflow, engine, outputs, and current evaluation snapshot.</text>
+
+  <rect class="pill" x="92" y="182" width="180" height="34" rx="17" ry="17" />
+  <rect class="pill" x="286" y="182" width="210" height="34" rx="17" ry="17" />
+  <rect class="pill" x="510" y="182" width="198" height="34" rx="17" ry="17" />
+  <text class="pill-text" x="182" y="205">Flask Dashboard</text>
+  <text class="pill-text" x="391" y="205">Image + Video Analysis</text>
+  <text class="pill-text" x="609" y="205">JSON Reporting</text>
+
+  <rect class="panel" x="44" y="268" width="420" height="522" rx="24" ry="24" />
+  <text class="section" x="76" y="320">PROJECT SCOPE</text>
+  <text class="heading" x="76" y="368">What this system does</text>
+  <text class="body" x="76" y="420">1. Accepts image and video uploads from a browser.</text>
+  <text class="body" x="76" y="460">2. Loads a local deepfake model from <tspan class="mono">.h5</tspan> or <tspan class="mono">.keras</tspan>.</text>
+  <text class="body" x="76" y="500">3. Runs media-specific scoring through a shared analysis engine.</text>
+  <text class="body" x="76" y="540">4. Produces verdict, confidence, fake probability, and risk level.</text>
+  <text class="body" x="76" y="580">5. Saves structured JSON reports for each analysis session.</text>
+
+  <rect class="panel-soft" x="76" y="620" width="356" height="132" rx="20" ry="20" />
+  <text class="section" x="102" y="662">KEY MODULES</text>
+  <text class="body" x="102" y="704"><tspan class="mono">app.py</tspan> manages routes and upload flow.</text>
+  <text class="body" x="102" y="736"><tspan class="mono">analysis_engine.py</tspan> handles inference,</text>
+  <text class="body" x="102" y="764">heuristics, aggregation, and report generation.</text>
+
+  <rect class="panel" x="490" y="268" width="640" height="522" rx="24" ry="24" />
+  <text class="section" x="522" y="320">ANALYSIS PIPELINE</text>
+  <text class="heading" x="522" y="368">End-to-end processing flow</text>
+
+  <rect class="panel-soft" x="548" y="426" width="210" height="92" rx="18" ry="18" />
+  <text class="node-title" x="653" y="462">Upload</text>
+  <text class="node-body" x="653" y="488">Browser image or video</text>
+  <text class="node-body" x="653" y="510">saved into static/uploads</text>
+
+  <rect class="panel-soft" x="814" y="426" width="258" height="92" rx="18" ry="18" />
+  <text class="node-title" x="943" y="462">Validate + Route</text>
+  <text class="node-body" x="943" y="488">Check type and choose</text>
+  <text class="node-body" x="943" y="510">image or video branch</text>
+
+  <path class="line" d="M 758 472 L 813 472" />
+
+  <rect class="panel-soft" x="548" y="584" width="250" height="128" rx="18" ry="18" />
+  <text class="node-title" x="673" y="622">Image Branch</text>
+  <text class="node-body" x="673" y="650">Whole-image score</text>
+  <text class="node-body" x="673" y="674">Face-region score</text>
+  <text class="node-body" x="673" y="698">Heuristic calibration</text>
+
+  <rect class="panel-soft" x="826" y="584" width="246" height="128" rx="18" ry="18" />
+  <text class="node-title" x="949" y="622">Video Branch</text>
+  <text class="node-body" x="949" y="650">Frame sampling</text>
+  <text class="node-body" x="949" y="674">Temporal aggregation</text>
+  <text class="node-body" x="949" y="698">Key-frame extraction</text>
+
+  <path class="subline" d="M 943 518 L 943 552" />
+  <path class="subline" d="M 943 552 L 673 552 L 673 583" />
+  <path class="subline" d="M 943 552 L 949 552 L 949 583" />
+
+  <rect class="accent" x="624" y="736" width="364" height="70" rx="20" ry="20" />
+  <text class="node-title" x="806" y="779" fill="#ffffff">Final verdict + report payload</text>
+
+  <path class="line" d="M 673 712 L 673 770 L 623 770" />
+  <path class="line" d="M 949 712 L 949 770 L 989 770" />
+
+  <rect class="panel" x="1156" y="268" width="400" height="522" rx="24" ry="24" />
+  <text class="section" x="1188" y="320">OUTPUTS AND SNAPSHOT</text>
+  <text class="heading" x="1188" y="368">What the report can show</text>
+
+  <rect class="panel-soft" x="1188" y="404" width="336" height="154" rx="20" ry="20" />
+  <text class="section" x="1212" y="442">REPORT OUTPUTS</text>
+  <text class="body" x="1212" y="480">- Result dashboard page</text>
+  <text class="body" x="1212" y="516">- Probability chart for videos</text>
+  <text class="body" x="1212" y="552">- Key-frame thumbnails</text>
+  <text class="body" x="1212" y="588">- Downloadable JSON report</text>
+
+  <rect class="panel-soft" x="1188" y="590" width="336" height="170" rx="20" ry="20" />
+  <text class="section" x="1212" y="628">CURRENT METRICS</text>
+  <rect class="panel" x="1218" y="652" width="92" height="78" rx="16" ry="16" />
+  <rect class="panel" x="1330" y="652" width="92" height="78" rx="16" ry="16" />
+  <rect class="panel" x="1442" y="652" width="92" height="78" rx="16" ry="16" />
+  <text class="metric-num" x="1264" y="700">75%</text>
+  <text class="metric-num" x="1376" y="700">0.52</text>
+  <text class="metric-num" x="1488" y="700">AUC</text>
+  <text class="metric-label" x="1264" y="722">Accuracy</text>
+  <text class="metric-label" x="1376" y="722">Threshold</text>
+  <text class="metric-label" x="1488" y="722">1.00</text>
+  <text class="small" x="1212" y="754">Validation snapshot comes from the bundled sample workflow,</text>
+  <text class="small" x="1212" y="778">so real-world performance still depends on stronger data.</text>
+
+  <rect class="panel" x="44" y="828" width="1512" height="228" rx="24" ry="24" />
+  <text class="section" x="76" y="876">REPORT NOTE</text>
+  <text class="heading" x="76" y="924">Core technical interpretation</text>
+  <text class="body" x="76" y="970">This project is a complete local deepfake-analysis portal, not only a model script. It combines a Flask upload dashboard,</text>
+  <text class="body" x="76" y="1004">a shared inference engine, per-media scoring logic, JSON report generation, video key-frame analysis, and training/evaluation tools.</text>
+  <text class="foot" x="76" y="1038">Suggested figure caption: Architecture overview of the Deepfake Detection Portal showing browser input, detection pipeline, and report outputs.</text>
+</svg>

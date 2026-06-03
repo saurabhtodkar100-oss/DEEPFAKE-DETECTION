@@ -1,0 +1,166 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="980" viewBox="0 0 1400 980" role="img" aria-labelledby="title desc">
+  <title id="title">ER Diagram of Deepfake Detection Portal</title>
+  <desc id="desc">Black and white entity relationship diagram for the Deepfake Detection Portal showing media files, analysis reports, frame scores, key frames, metrics, and model files.</desc>
+  <defs>
+    <style>
+      .bg {
+        fill: #ffffff;
+      }
+      .entity {
+        fill: #ffffff;
+        stroke: #000000;
+        stroke-width: 2.2;
+      }
+      .header {
+        fill: #ffffff;
+        stroke: #000000;
+        stroke-width: 2.2;
+      }
+      .title {
+        font-family: Arial, sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        fill: #000000;
+        text-anchor: middle;
+      }
+      .attr {
+        font-family: Arial, sans-serif;
+        font-size: 18px;
+        fill: #000000;
+      }
+      .rel {
+        font-family: Arial, sans-serif;
+        font-size: 18px;
+        font-weight: 700;
+        fill: #000000;
+        text-anchor: middle;
+      }
+      .card {
+        font-family: Arial, sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+        fill: #000000;
+        text-anchor: middle;
+      }
+      .line {
+        fill: none;
+        stroke: #000000;
+        stroke-width: 2.4;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .caption {
+        font-family: Cambria, Georgia, serif;
+        font-size: 24px;
+        fill: #000000;
+        text-anchor: middle;
+      }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1400" height="980" />
+
+  <!-- Analysis Report -->
+  <rect class="entity" x="510" y="80" width="380" height="280" />
+  <line class="line" x1="510" y1="136" x2="890" y2="136" />
+  <text class="title" x="700" y="116">ANALYSIS_REPORT</text>
+  <text class="attr" x="535" y="170">PK report_id</text>
+  <text class="attr" x="535" y="200">FK media_id</text>
+  <text class="attr" x="535" y="230">FK model_id</text>
+  <text class="attr" x="535" y="260">FK metrics_id</text>
+  <text class="attr" x="535" y="290">analyzed_at</text>
+  <text class="attr" x="535" y="320">threshold</text>
+  <text class="attr" x="700" y="170">verdict</text>
+  <text class="attr" x="700" y="200">confidence</text>
+  <text class="attr" x="700" y="230">fake_probability</text>
+  <text class="attr" x="700" y="260">risk_level</text>
+  <text class="attr" x="700" y="290">sampled_frames</text>
+  <text class="attr" x="700" y="320">total_frames</text>
+  <text class="attr" x="700" y="350">suspicious_ratio</text>
+
+  <!-- Media File -->
+  <rect class="entity" x="80" y="150" width="300" height="220" />
+  <line class="line" x1="80" y1="206" x2="380" y2="206" />
+  <text class="title" x="230" y="186">MEDIA_FILE</text>
+  <text class="attr" x="105" y="240">PK media_id</text>
+  <text class="attr" x="105" y="270">original_filename</text>
+  <text class="attr" x="105" y="300">stored_filename</text>
+  <text class="attr" x="105" y="330">media_type</text>
+  <text class="attr" x="105" y="360">upload_relative_path</text>
+
+  <!-- Model File -->
+  <rect class="entity" x="1010" y="150" width="300" height="190" />
+  <line class="line" x1="1010" y1="206" x2="1310" y2="206" />
+  <text class="title" x="1160" y="186">MODEL_FILE</text>
+  <text class="attr" x="1035" y="240">PK model_id</text>
+  <text class="attr" x="1035" y="270">model_path</text>
+  <text class="attr" x="1035" y="300">model_format</text>
+  <text class="attr" x="1035" y="330">ready_state</text>
+
+  <!-- Metrics -->
+  <rect class="entity" x="1010" y="420" width="300" height="260" />
+  <line class="line" x1="1010" y1="476" x2="1310" y2="476" />
+  <text class="title" x="1160" y="456">METRICS</text>
+  <text class="attr" x="1035" y="510">PK metrics_id</text>
+  <text class="attr" x="1035" y="540">dataset_name</text>
+  <text class="attr" x="1035" y="570">threshold</text>
+  <text class="attr" x="1035" y="600">best_threshold</text>
+  <text class="attr" x="1035" y="630">accuracy</text>
+  <text class="attr" x="1175" y="510">precision</text>
+  <text class="attr" x="1175" y="540">recall</text>
+  <text class="attr" x="1175" y="570">f1_score</text>
+  <text class="attr" x="1175" y="600">auc</text>
+  <text class="attr" x="1175" y="630">evaluated_at</text>
+
+  <!-- Frame Score -->
+  <rect class="entity" x="120" y="540" width="330" height="220" />
+  <line class="line" x1="120" y1="596" x2="450" y2="596" />
+  <text class="title" x="285" y="576">FRAME_SCORE</text>
+  <text class="attr" x="145" y="630">PK frame_score_id</text>
+  <text class="attr" x="145" y="660">FK report_id</text>
+  <text class="attr" x="145" y="690">frame_no</text>
+  <text class="attr" x="145" y="720">fake_probability</text>
+  <text class="attr" x="145" y="750">background_probability</text>
+  <text class="attr" x="145" y="780">face_probability</text>
+
+  <!-- Key Frame -->
+  <rect class="entity" x="540" y="520" width="360" height="250" />
+  <line class="line" x1="540" y1="576" x2="900" y2="576" />
+  <text class="title" x="720" y="556">KEY_FRAME</text>
+  <text class="attr" x="565" y="610">PK key_frame_id</text>
+  <text class="attr" x="565" y="640">FK report_id</text>
+  <text class="attr" x="565" y="670">frame_no</text>
+  <text class="attr" x="565" y="700">label</text>
+  <text class="attr" x="565" y="730">thumbnail_relative_path</text>
+  <text class="attr" x="565" y="760">fake_probability</text>
+  <text class="attr" x="745" y="610">background_probability</text>
+  <text class="attr" x="745" y="640">face_probability</text>
+
+  <!-- Relationship lines -->
+  <line class="line" x1="380" y1="260" x2="510" y2="260" />
+  <text class="card" x="405" y="245">1</text>
+  <text class="card" x="485" y="245">1</text>
+  <text class="rel" x="445" y="285">generates</text>
+
+  <line class="line" x1="890" y1="230" x2="1010" y2="230" />
+  <text class="card" x="915" y="215">N</text>
+  <text class="card" x="985" y="215">1</text>
+  <text class="rel" x="950" y="255">uses</text>
+
+  <path class="line" d="M 890 300 L 950 300 L 950 550 L 1010 550" />
+  <text class="card" x="910" y="292">N</text>
+  <text class="card" x="985" y="540">1</text>
+  <text class="rel" x="980" y="420">applies</text>
+
+  <path class="line" d="M 620 360 L 620 450 L 285 450 L 285 540" />
+  <text class="card" x="605" y="388">1</text>
+  <text class="card" x="300" y="525">N</text>
+  <text class="rel" x="430" y="438">contains</text>
+
+  <line class="line" x1="720" y1="360" x2="720" y2="520" />
+  <text class="card" x="705" y="388">1</text>
+  <text class="card" x="705" y="505">N</text>
+  <text class="rel" x="805" y="442">highlights</text>
+
+  <text class="caption" x="700" y="925">Fig.5.3 ER diagram of Deepfake Detection Portal</text>
+</svg>

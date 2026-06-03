@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="980" viewBox="0 0 1800 980" role="img" aria-labelledby="title desc">
+  <title id="title">Deepfake Detection Portal Horizontal Block Diagram</title>
+  <desc id="desc">Alternate professional block diagram for the Deepfake Detection Portal with a clean horizontal layout for report use.</desc>
+  <defs>
+    <linearGradient id="headerGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#17395f"/>
+      <stop offset="100%" stop-color="#2f6fa8"/>
+    </linearGradient>
+    <linearGradient id="engineGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f3a35f"/>
+      <stop offset="100%" stop-color="#e76f51"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#6f8fb3"/>
+    </marker>
+    <style>
+      .page { fill: #f5f8fc; }
+      .header { fill: url(#headerGrad); }
+      .panel { fill: #ffffff; stroke: #d9e1ea; stroke-width: 2.2; }
+      .panel-soft { fill: #f8fbfe; stroke: #d9e1ea; stroke-width: 2; }
+      .engine { fill: url(#engineGrad); }
+      .line { fill: none; stroke: #6f8fb3; stroke-width: 4.5; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+      .join { fill: none; stroke: #6f8fb3; stroke-width: 4.5; stroke-linecap: round; stroke-linejoin: round; }
+      .title { font-family: Arial, sans-serif; font-size: 52px; font-weight: 700; fill: #ffffff; }
+      .subtitle { font-family: Arial, sans-serif; font-size: 24px; fill: #d9e6f3; }
+      .section { font-family: Arial, sans-serif; font-size: 19px; font-weight: 700; fill: #5b738c; letter-spacing: 1px; }
+      .card-title { font-family: Arial, sans-serif; font-size: 27px; font-weight: 700; fill: #19324b; text-anchor: middle; }
+      .card-sub { font-family: Arial, sans-serif; font-size: 18px; fill: #4f677f; text-anchor: middle; }
+      .engine-title { font-family: Arial, sans-serif; font-size: 31px; font-weight: 700; fill: #ffffff; text-anchor: middle; }
+      .engine-sub { font-family: Arial, sans-serif; font-size: 19px; fill: #fff1e8; text-anchor: middle; }
+      .caption { font-family: Cambria, Georgia, serif; font-size: 25px; fill: #1c2a35; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <rect class="page" x="0" y="0" width="1800" height="980"/>
+
+  <rect class="header" x="48" y="36" width="1704" height="150" rx="28" ry="28"/>
+  <text class="title" x="92" y="102">Deepfake Detection Portal</text>
+  <text class="subtitle" x="92" y="144">Alternate block diagram with horizontal workflow layout</text>
+
+  <text class="section" x="86" y="256">CORE PIPELINE</text>
+
+  <rect class="panel" x="82" y="330" width="250" height="130" rx="24" ry="24"/>
+  <text class="card-title" x="207" y="385">Media Upload</text>
+  <text class="card-sub" x="207" y="420">Browser image or video</text>
+
+  <rect class="panel" x="402" y="330" width="250" height="130" rx="24" ry="24"/>
+  <text class="card-title" x="527" y="385">Validation</text>
+  <text class="card-sub" x="527" y="420">Type check and file storage</text>
+
+  <rect class="panel" x="722" y="330" width="280" height="130" rx="24" ry="24"/>
+  <text class="card-title" x="862" y="385">Media Processing</text>
+  <text class="card-sub" x="862" y="420">Resize, sample, prepare input</text>
+
+  <rect class="engine" x="1072" y="300" width="360" height="190" rx="30" ry="30"/>
+  <text class="engine-title" x="1252" y="362">Detection Engine</text>
+  <text class="engine-sub" x="1252" y="398">Whole-image scoring</text>
+  <text class="engine-sub" x="1252" y="428">Face-region scoring and heuristics</text>
+  <text class="engine-sub" x="1252" y="458">Video frame aggregation</text>
+
+  <rect class="panel" x="1502" y="330" width="228" height="130" rx="24" ry="24"/>
+  <text class="card-title" x="1616" y="385">Result View</text>
+  <text class="card-sub" x="1616" y="420">Dashboard output</text>
+
+  <path class="line" d="M 332 395 L 401 395"/>
+  <path class="line" d="M 652 395 L 721 395"/>
+  <path class="line" d="M 1002 395 L 1071 395"/>
+  <path class="line" d="M 1432 395 L 1501 395"/>
+
+  <text class="section" x="86" y="592">MODEL AND EVALUATION INPUTS</text>
+
+  <rect class="panel-soft" x="952" y="664" width="256" height="122" rx="24" ry="24"/>
+  <text class="card-title" x="1080" y="722">Trained Model</text>
+  <text class="card-sub" x="1080" y="758">deepfake_model.h5 / .keras</text>
+
+  <rect class="panel-soft" x="1296" y="664" width="256" height="122" rx="24" ry="24"/>
+  <text class="card-title" x="1424" y="722">Threshold Metrics</text>
+  <text class="card-sub" x="1424" y="758">best_threshold and accuracy</text>
+
+  <path class="line" d="M 1080 664 L 1080 566 L 1188 566 L 1188 491"/>
+  <path class="line" d="M 1424 664 L 1424 566 L 1316 566 L 1316 491"/>
+
+  <text class="section" x="86" y="840">GENERATED OUTPUTS</text>
+
+  <rect class="panel-soft" x="160" y="704" width="270" height="122" rx="24" ry="24"/>
+  <text class="card-title" x="295" y="762">JSON Report</text>
+  <text class="card-sub" x="295" y="798">Stored report file</text>
+
+  <rect class="panel-soft" x="500" y="704" width="270" height="122" rx="24" ry="24"/>
+  <text class="card-title" x="635" y="762">Frame Analytics</text>
+  <text class="card-sub" x="635" y="798">Chart and key frames</text>
+
+  <rect class="panel" x="840" y="704" width="340" height="156" rx="26" ry="26"/>
+  <text class="card-title" x="1010" y="766">Report Package</text>
+  <text class="card-sub" x="1010" y="802">Verdict, confidence, probability,</text>
+  <text class="card-sub" x="1010" y="832">risk level, notes, and media preview</text>
+
+  <path class="join" d="M 1616 460 L 1616 612 L 1010 612 L 1010 703"/>
+  <path class="line" d="M 1010 703 L 1010 672 L 295 672 L 295 703"/>
+  <path class="line" d="M 1010 703 L 1010 672 L 635 672 L 635 703"/>
+
+  <text class="caption" x="900" y="930">Fig.5.1 Alternate block diagram of the Deepfake Detection Portal</text>
+</svg>

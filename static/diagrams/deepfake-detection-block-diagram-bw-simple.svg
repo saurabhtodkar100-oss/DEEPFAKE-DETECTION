@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc">
+  <title id="title">Deepfake Detection Portal Simple Block Diagram</title>
+  <desc id="desc">Simple black and white block diagram for the Deepfake Detection Portal.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="#111111" />
+    </marker>
+    <style>
+      .bg { fill: #ffffff; }
+      .box { fill: #ffffff; stroke: #111111; stroke-width: 2.6; }
+      .line { fill: none; stroke: #111111; stroke-width: 2.8; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+      .join { fill: none; stroke: #111111; stroke-width: 2.8; stroke-linecap: round; stroke-linejoin: round; }
+      .title { font-family: Arial, sans-serif; font-size: 36px; font-weight: 700; fill: #111111; text-anchor: middle; }
+      .label { font-family: Arial, sans-serif; font-size: 24px; font-weight: 700; fill: #111111; text-anchor: middle; }
+      .sub { font-family: Arial, sans-serif; font-size: 18px; fill: #111111; text-anchor: middle; }
+      .side { font-family: Arial, sans-serif; font-size: 21px; font-weight: 700; fill: #111111; text-anchor: middle; }
+      .caption { font-family: Cambria, Georgia, serif; font-size: 22px; fill: #111111; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1400" height="900" />
+
+  <text class="title" x="700" y="70">Deepfake Detection Portal - Block Diagram</text>
+
+  <rect class="box" x="80" y="180" width="220" height="100" rx="16" ry="16" />
+  <text class="label" x="190" y="225">Media Upload</text>
+  <text class="sub" x="190" y="255">Image / Video Input</text>
+
+  <rect class="box" x="380" y="180" width="220" height="100" rx="16" ry="16" />
+  <text class="label" x="490" y="225">Validation</text>
+  <text class="sub" x="490" y="255">Check and Store File</text>
+
+  <rect class="box" x="680" y="160" width="300" height="140" rx="18" ry="18" />
+  <text class="label" x="830" y="210">Detection Engine</text>
+  <text class="sub" x="830" y="240">Image / Video Analysis</text>
+  <text class="sub" x="830" y="266">Face and Frame Scoring</text>
+
+  <rect class="box" x="1060" y="180" width="220" height="100" rx="16" ry="16" />
+  <text class="label" x="1170" y="225">Decision</text>
+  <text class="sub" x="1170" y="255">REAL / FAKE Verdict</text>
+
+  <path class="line" d="M 300 230 L 379 230" />
+  <path class="line" d="M 600 230 L 679 230" />
+  <path class="line" d="M 980 230 L 1059 230" />
+
+  <rect class="box" x="720" y="420" width="220" height="90" rx="16" ry="16" />
+  <text class="side" x="830" y="458">Trained Model</text>
+  <text class="sub" x="830" y="486">.h5 / .keras</text>
+
+  <rect class="box" x="1020" y="420" width="220" height="90" rx="16" ry="16" />
+  <text class="side" x="1130" y="458">Metrics File</text>
+  <text class="sub" x="1130" y="486">best_threshold</text>
+
+  <path class="line" d="M 830 420 L 830 340" />
+  <path class="line" d="M 1130 420 L 1130 340 L 920 340" />
+
+  <rect class="box" x="300" y="620" width="260" height="100" rx="16" ry="16" />
+  <text class="label" x="430" y="665">Result Dashboard</text>
+  <text class="sub" x="430" y="695">Preview and Scores</text>
+
+  <rect class="box" x="840" y="620" width="260" height="100" rx="16" ry="16" />
+  <text class="label" x="970" y="665">Report Output</text>
+  <text class="sub" x="970" y="695">JSON / Key Frames</text>
+
+  <path class="join" d="M 1170 280 L 1170 560" />
+  <path class="line" d="M 1170 560 L 430 560 L 430 619" />
+  <path class="line" d="M 1170 560 L 970 560 L 970 619" />
+
+  <text class="caption" x="700" y="820">Fig.5.1 Simple block diagram of the Deepfake Detection Portal</text>
+</svg>

@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block title %}Deepfake Detection{% endblock %}
+
+{% block content %}
+<section class="hero-panel hero-panel-single">
+  <div class="hero-copy">
+    <span class="eyebrow">Quick Check</span>
+    <h1>Check images and videos for deepfakes.</h1>
+    <p class="hero-text">
+      Upload a file and get a clear verdict, confidence score, and JSON report.
+    </p>
+
+    <div class="hero-metrics">
+      <article class="metric-pill">
+        <span>Supports</span>
+        <strong>Image + Video</strong>
+      </article>
+      <article class="metric-pill">
+        <span>Threshold</span>
+        <strong>{{ metrics.get("best_threshold", metrics.get("threshold")) | pct }}</strong>
+      </article>
+      <article class="metric-pill">
+        <span>Model</span>
+        <strong>{% if model_state.ready %}Ready{% else %}Setup Needed{% endif %}</strong>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="workspace-grid">
+  <section class="surface-card upload-card">
+    <div class="section-head">
+      <div>
+        <span class="panel-kicker">Upload</span>
+        <h2>Upload media</h2>
+      </div>
+      <span class="subtle-tag">PNG, JPG, WEBP, MP4, AVI, MOV, MKV</span>
+    </div>
+
+    <form action="{{ url_for('analyze') }}" method="post" enctype="multipart/form-data" class="upload-form" id="uploadForm">
+      <label for="mediaInput" class="drop-zone" id="dropZone">
+        <input id="mediaInput" type="file" name="media" accept="image/*,video/*" required />
+        <span class="drop-kicker">Drag and drop or browse</span>
+        <strong>Drop file here</strong>
+        <span>Choose one image or video to analyze.</span>
+      </label>
+
+      <div class="upload-toolbar">
+        <div class="file-line" id="fileLine">No file selected</div>
+        <button type="submit" class="btn-primary" {% if not model_state.ready %}disabled title="Generate or configure a model before running analysis."{% endif %}>Analyze</button>
+      </div>
+    </form>
+  </section>
+
+  <aside class="surface-card info-rail">
+    <div class="section-head">
+      <div>
+        <span class="panel-kicker">Model</span>
+        <h2>{% if model_state.ready %}Ready{% else %}Setup needed{% endif %}</h2>
+      </div>
+    </div>
+
+    {% if model_state.ready %}
+      <div class="inline-status good">
+        <strong>Model loaded.</strong>
+        <span>{{ model_state.path }}</span>
+      </div>
+
+      <dl class="mini-stats">
+        <div>
+          <dt>Dataset</dt>
+          <dd>{{ metrics.get("dataset_name") }}</dd>
+        </div>
+        <div>
+          <dt>Accuracy</dt>
+          <dd>{{ metrics.get("accuracy") | pct }}</dd>
+        </div>
+      </dl>
+    {% else %}
+      <div class="inline-status warning">
+        <strong>Model not loaded.</strong>
+        <span>{{ model_state.error }}</span>
+      </div>
+
+      <div class="setup-block">
+        <p class="setup-title">Run the demo model setup</p>
+        <pre class="command-block">{{ setup_command }}</pre>
+        <p class="hint">
+          Or place a trained file at <code>D:\deepfake-detection-portal\models\deepfake_model.keras</code> or
+          <code>D:\deepfake-detection-portal\models\deepfake_model.h5</code>, or set <code>DEEPFAKE_MODEL_PATH</code>.
+        </p>
+      </div>
+    {% endif %}
+
+    <ul class="simple-list">
+      <li>Upload one image or video.</li>
+      <li>Review the verdict and confidence.</li>
+      <li>Download the JSON report if needed.</li>
+    </ul>
+  </aside>
+</section>
+{% endblock %}
+
+{% block scripts %}
+  <script src="{{ url_for('static', filename='js/upload.js') }}"></script>
+{% endblock %}

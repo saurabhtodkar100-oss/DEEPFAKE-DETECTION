@@ -1,0 +1,278 @@
+{% extends "base.html" %}
+
+{% block title %}Result | {{ report.filename }}{% endblock %}
+
+{% block head %}
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{% endblock %}
+
+{% block content %}
+<section class="result-hero">
+  <div class="result-heading">
+    <span class="eyebrow">Result</span>
+    <h1>{{ report.filename }}</h1>
+    <p class="hero-text">{{ report.media_type | title }} file / {{ report.risk_level }} risk / {{ report.analyzed_at }}</p>
+  </div>
+
+  <div class="hero-scoreboard">
+    <article class="score-card verdict-card {% if report.verdict == 'FAKE' %}danger{% else %}safe{% endif %}">
+      <span>Verdict</span>
+      <strong>{{ report.verdict }}</strong>
+      <small>{{ report.risk_level }} risk</small>
+    </article>
+    <article class="score-card">
+      <span>Confidence</span>
+      <strong>{{ report.confidence | pct }}</strong>
+      <small>{{ report.media_type | title }}</small>
+    </article>
+    <article class="score-card">
+      <span>Fake Score</span>
+      <strong>{{ report.fake_probability | pct }}</strong>
+      <small>Threshold {{ report.get("threshold") | pct }}</small>
+    </article>
+  </div>
+</section>
+
+<section class="results-grid">
+  <section class="surface-card media-panel">
+    <div class="section-head">
+      <div>
+        <span class="panel-kicker">Preview</span>
+        <h2>Preview</h2>
+      </div>
+      <span class="subtle-tag">{{ report.media_type | upper }}</span>
+    </div>
+
+    {% if report.media_type == 'image' %}
+      <img src="{{ url_for('static', filename=report.upload_relative_path) }}" alt="uploaded image" class="preview-media" />
+    {% else %}
+      <video controls class="preview-media" src="{{ url_for('static', filename=report.upload_relative_path) }}"></video>
+    {% endif %}
+
+    <div class="button-row">
+      <a class="btn-secondary" href="{{ url_for('index') }}">New Analysis</a>
+      <a class="btn-primary" href="{{ url_for('download_report', report_id=report.report_id) }}">Download JSON</a>
+    </div>
+  </section>
+
+  <aside class="surface-card insights-panel">
+    <div class="section-head">
+      <div>
+        <span class="panel-kicker">Summary</span>
+        <h2>Summary</h2>
+      </div>
+    </div>
+
+    <div class="progress-stack">
+      <div class="progress-item">
+        <div class="progress-label">
+          <span>Fake score</span>
+          <strong>{{ report.fake_probability | pct }}</strong>
+        </div>
+        <div class="progress-track"><span style="width: {{ report.fake_probability | pct }};"></span></div>
+      </div>
+
+      <div class="progress-item">
+        <div class="progress-label">
+          <span>Confidence</span>
+          <strong>{{ report.confidence | pct }}</strong>
+        </div>
+        <div class="progress-track cool"><span style="width: {{ report.confidence | pct }};"></span></div>
+      </div>
+
+      <div class="progress-item">
+        <div class="progress-label">
+          <span>Suspicious ratio</span>
+          <strong>{{ report.suspicious_ratio | pct }}</strong>
+        </div>
+        <div class="progress-track muted"><span style="width: {{ report.suspicious_ratio | pct }};"></span></div>
+      </div>
+    </div>
+
+    <dl class="detail-list">
+      <div>
+        <dt>Type</dt>
+        <dd>{{ report.media_type | title }}</dd>
+      </div>
+      <div>
+        <dt>Risk</dt>
+        <dd>{{ report.risk_level }}</dd>
+      </div>
+      <div>
+        <dt>Frames</dt>
+        <dd>{{ report.sampled_frames }} / {{ report.total_frames }}</dd>
+      </div>
+      <div>
+        <dt>Saved file</dt>
+        <dd>{{ report.stored_filename }}</dd>
+      </div>
+    </dl>
+  </aside>
+</section>
+
+<section class="surface-card">
+  <div class="section-head">
+    <div>
+      <span class="panel-kicker">Details</span>
+      <h2>More details</h2>
+    </div>
+  </div>
+
+  <div class="stat-grid rich-stats">
+    {% if report.media_type == 'image' %}
+      <div><span>Background Score</span><strong>{{ report.get("whole_image_probability") | pct }}</strong></div>
+      <div><span>Face Score</span><strong>{{ report.get("face_probability") | pct }}</strong></div>
+      <div><span>Blend Score</span><strong>{{ report.get("model_blend_probability", report.fake_probability) | pct }}</strong></div>
+      <div><span>Adjustment</span><strong>{{ report.get("heuristic_adjustment") | pct }}</strong></div>
+      <div><span>Face Regions</span><strong>{{ report.get("face_regions_used", 0) }}</strong></div>
+      <div><span>Largest Face</span><strong>{{ report.get("max_face_area_ratio") | pct }}</strong></div>
+    {% else %}
+      <div><span>Avg Frame Score</span><strong>{{ report.get("average_frame_probability") | pct }}</strong></div>
+      <div><span>Score Std Dev</span><strong>{{ report.get("frame_score_std") | pct }}</strong></div>
+      <div><span>Avg Background</span><strong>{{ report.get("average_background_probability") | pct }}</strong></div>
+      <div><span>Avg Face Score</span><strong>{{ report.get("average_face_probability") | pct }}</strong></div>
+      <div><span>Avg Motion</span><strong>{{ report.get("average_frame_motion", 0) | round(2) }}</strong></div>
+      <div><span>Motion Std Dev</span><strong>{{ report.get("frame_motion_std", 0) | round(2) }}</strong></div>
+      <div><span>Face Frames</span><strong>{{ report.get("face_frames", 0) }}</strong></div>
+      <div><span>Video Threshold</span><strong>{{ report.get("effective_video_threshold", report.get("threshold")) | pct }}</strong></div>
+      <div><span>Adjustment</span><strong>{{ report.get("heuristic_adjustment") | pct }}</strong></div>
+    {% endif %}
+  </div>
+</section>
+
+<section class="notes-grid">
+  <section class="surface-card">
+    <div class="section-head">
+      <div>
+        <span class="panel-kicker">Notes</span>
+        <h2>Notes</h2>
+      </div>
+    </div>
+
+    <ul class="obs-list polished-list">
+      {% for item in report.observations %}
+        <li>{{ item }}</li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  {% if report.media_type == 'video' and report.get("key_frames") %}
+    <section class="surface-card">
+      <div class="section-head">
+        <div>
+          <span class="panel-kicker">Key Frames</span>
+          <h2>Key frames</h2>
+        </div>
+      </div>
+
+      <div class="frame-grid">
+        {% for frame in report.get("key_frames", []) %}
+          <article class="frame-card">
+            <img class="frame-thumb" src="{{ url_for('static', filename=frame.thumbnail_relative_path) }}" alt="analysis frame {{ frame.frame }}" />
+            <div class="frame-meta">
+              <strong>{{ frame.label }}</strong>
+              <span>Frame {{ frame.frame }}</span>
+              <span>Fake score {{ frame.fake_probability | pct }}</span>
+              <span>Background {{ frame.background_probability | pct }}</span>
+              <span>Face {{ frame.get("face_probability") | pct }}</span>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
+</section>
+
+{% if report.media_type == 'video' and frame_labels %}
+<section class="surface-card chart-panel">
+  <div class="section-head">
+    <div>
+      <span class="panel-kicker">Chart</span>
+      <h2>Frame scores</h2>
+    </div>
+  </div>
+  <canvas id="frameChart"></canvas>
+</section>
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+{% if report.media_type == 'video' and frame_labels %}
+<script>
+  const labels = {{ frame_labels | tojson }};
+  const dataValues = {{ frame_values | tojson }};
+  const thresholdValue = {{ ((report.get("effective_video_threshold", report.get("threshold", 0.5))) * 100) | round(2) }};
+
+  const ctx = document.getElementById('frameChart');
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Fake Probability (%)',
+        data: dataValues,
+        borderColor: '#eb6f51',
+        backgroundColor: 'rgba(235, 111, 81, 0.14)',
+        fill: true,
+        tension: 0.28,
+        pointRadius: 2.5,
+        pointHoverRadius: 4,
+        borderWidth: 2
+      }, {
+        label: 'Threshold (%)',
+        data: labels.map(() => thresholdValue),
+        borderColor: 'rgba(109, 170, 198, 0.85)',
+        borderDash: [7, 6],
+        pointRadius: 0,
+        fill: false,
+        borderWidth: 1.5
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          labels: {
+            color: '#e8edf3',
+            font: {
+              family: 'IBM Plex Sans'
+            }
+          }
+        }
+      },
+      scales: {
+        y: {
+          min: 0,
+          max: 100,
+          grid: {
+            color: 'rgba(148, 163, 184, 0.16)'
+          },
+          ticks: {
+            color: '#c8d4e1'
+          },
+          title: {
+            display: true,
+            text: 'Fake Probability (%)',
+            color: '#c8d4e1'
+          }
+        },
+        x: {
+          grid: {
+            color: 'rgba(148, 163, 184, 0.08)'
+          },
+          ticks: {
+            color: '#c8d4e1'
+          },
+          title: {
+            display: true,
+            text: 'Frame Index',
+            color: '#c8d4e1'
+          }
+        }
+      }
+    }
+  });
+</script>
+{% endif %}
+{% endblock %}

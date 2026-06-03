@@ -1,0 +1,16 @@
+﻿__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+
+static/uploads/*
+!static/uploads/.gitkeep
+reports/*
+!reports/.gitkeep
+
+models/deepfake_model.h5
+models/deepfake_model.keras
+dataset_large/
+metrics/train_history.json
+metrics/latest_metrics.backup.json

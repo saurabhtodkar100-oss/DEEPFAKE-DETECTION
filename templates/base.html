@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}Deepfake Detection{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+  {% block head %}{% endblock %}
+</head>
+<body>
+  <div class="page-bg"></div>
+  <div class="page-noise"></div>
+
+  <header class="site-header">
+    <div class="container shell-topbar">
+      <a href="{{ url_for('index') }}" class="brand-mark">
+        <span class="brand-icon">DF</span>
+        <span class="brand-copy">
+          <strong>Deepfake Detection</strong>
+          <small>Quick review tool</small>
+        </span>
+      </a>
+
+      <div class="topbar-meta">
+        <span class="topbar-chip">Image + Video</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container page-shell">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="flash-wrap">
+          {% for category, message in messages %}
+            <div class="flash {{ category }}">{{ message }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+  </main>
+
+  {% block scripts %}{% endblock %}
+</body>
+</html>

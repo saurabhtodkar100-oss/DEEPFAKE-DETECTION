@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="920" viewBox="0 0 900 920" role="img" aria-labelledby="title desc">
+  <title id="title">Deepfake Detection Portal Block Diagram</title>
+  <desc id="desc">A simple report-style block diagram for the deepfake detection portal.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#222222" />
+    </marker>
+    <style>
+      .bg {
+        fill: #ffffff;
+      }
+      .box {
+        fill: #ffffff;
+        stroke: #333333;
+        stroke-width: 2.2;
+      }
+      .label {
+        font-family: Arial, sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+        fill: #333333;
+        text-anchor: middle;
+      }
+      .sub {
+        font-family: Arial, sans-serif;
+        font-size: 17px;
+        fill: #333333;
+        text-anchor: middle;
+      }
+      .module-title {
+        font-family: Arial, sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+        fill: #333333;
+        text-anchor: middle;
+      }
+      .module-line {
+        font-family: Arial, sans-serif;
+        font-size: 18px;
+        fill: #333333;
+        text-anchor: middle;
+      }
+      .line {
+        fill: none;
+        stroke: #222222;
+        stroke-width: 2.2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .caption {
+        font-family: Cambria, Georgia, serif;
+        font-size: 22px;
+        fill: #111111;
+        text-anchor: middle;
+      }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="900" height="920" />
+
+  <rect class="box" x="350" y="30" width="200" height="80" rx="14" ry="14" />
+  <text class="label" x="450" y="77">Media Input</text>
+
+  <path class="line" d="M 450 110 L 450 160" marker-end="url(#arrow)" />
+
+  <rect class="box" x="350" y="165" width="200" height="80" rx="14" ry="14" />
+  <text class="label" x="450" y="212">Media Processing</text>
+
+  <path class="line" d="M 450 245 L 450 295" marker-end="url(#arrow)" />
+
+  <rect class="box" x="225" y="300" width="450" height="180" rx="28" ry="28" />
+  <text class="module-title" x="450" y="348">AI DETECTION MODULE</text>
+  <text class="module-line" x="450" y="385">Image scoring</text>
+  <text class="module-line" x="450" y="415">Face scoring</text>
+  <text class="module-line" x="450" y="445">Threshold decision</text>
+  <text class="module-line" x="450" y="475">Frame analysis</text>
+
+  <path class="line" d="M 225 390 L 120 390 L 120 510" marker-end="url(#arrow)" />
+  <path class="line" d="M 675 390 L 780 390 L 780 510" marker-end="url(#arrow)" />
+
+  <rect class="box" x="20" y="510" width="220" height="80" rx="14" ry="14" />
+  <text class="label" x="130" y="552">RESULT OUTPUT</text>
+  <text class="sub" x="130" y="577">Verdict / Confidence</text>
+
+  <rect class="box" x="660" y="510" width="220" height="80" rx="14" ry="14" />
+  <text class="label" x="770" y="552">REPORT STORAGE</text>
+  <text class="sub" x="770" y="577">JSON / Key Frames</text>
+
+  <path class="line" d="M 130 590 L 130 725 L 340 725" marker-end="url(#arrow)" />
+  <path class="line" d="M 770 590 L 770 725 L 560 725" marker-end="url(#arrow)" />
+
+  <rect class="box" x="340" y="670" width="220" height="80" rx="14" ry="14" />
+  <text class="label" x="450" y="707">DASHBOARD</text>
+  <text class="sub" x="450" y="732">Preview / Download</text>
+
+  <text class="caption" x="450" y="865">Fig.5.1 Block diagram of Deepfake Detection Portal</text>
+</svg>

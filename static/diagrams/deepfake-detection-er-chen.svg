@@ -1,0 +1,242 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1620" height="980" viewBox="0 0 1620 980" role="img" aria-labelledby="title desc">
+  <title id="title">Chen ER Diagram of Deepfake Detection Portal</title>
+  <desc id="desc">Black and white Chen notation ER diagram for the Deepfake Detection Portal.</desc>
+  <defs>
+    <style>
+      .bg { fill: #ffffff; }
+      .entity {
+        fill: #ffffff;
+        stroke: #000000;
+        stroke-width: 2;
+      }
+      .relation {
+        fill: #ffffff;
+        stroke: #000000;
+        stroke-width: 2;
+      }
+      .attr {
+        fill: #ffffff;
+        stroke: #000000;
+        stroke-width: 2;
+      }
+      .line {
+        fill: none;
+        stroke: #000000;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .entity-text {
+        font-family: Arial, sans-serif;
+        font-size: 22px;
+        fill: #000000;
+        text-anchor: middle;
+      }
+      .relation-text {
+        font-family: Arial, sans-serif;
+        font-size: 20px;
+        fill: #000000;
+        text-anchor: middle;
+      }
+      .attr-text {
+        font-family: Arial, sans-serif;
+        font-size: 18px;
+        fill: #000000;
+        text-anchor: middle;
+      }
+      .key {
+        text-decoration: underline;
+      }
+      .card {
+        font-family: Arial, sans-serif;
+        font-size: 18px;
+        fill: #000000;
+        text-anchor: middle;
+      }
+      .caption {
+        font-family: Cambria, Georgia, serif;
+        font-size: 24px;
+        fill: #000000;
+        text-anchor: middle;
+      }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1620" height="980" />
+
+  <!-- Entities -->
+  <rect class="entity" x="180" y="120" width="130" height="70" rx="8" ry="8" />
+  <text class="entity-text" x="245" y="163">Media</text>
+
+  <rect class="entity" x="650" y="120" width="150" height="70" rx="8" ry="8" />
+  <text class="entity-text" x="725" y="163">Report</text>
+
+  <rect class="entity" x="1190" y="120" width="130" height="70" rx="8" ry="8" />
+  <text class="entity-text" x="1255" y="163">Metrics</text>
+
+  <rect class="entity" x="180" y="610" width="140" height="70" rx="8" ry="8" />
+  <text class="entity-text" x="250" y="653">Frame_Score</text>
+
+  <rect class="entity" x="660" y="610" width="140" height="70" rx="8" ry="8" />
+  <text class="entity-text" x="730" y="653">Detection</text>
+
+  <rect class="entity" x="1170" y="610" width="140" height="70" rx="8" ry="8" />
+  <text class="entity-text" x="1240" y="653">Key_Frame</text>
+
+  <!-- Relationships -->
+  <polygon class="relation" points="420,155 470,105 520,155 470,205" />
+  <text class="relation-text" x="470" y="162">Produces</text>
+
+  <polygon class="relation" points="980,155 1030,105 1080,155 1030,205" />
+  <text class="relation-text" x="1030" y="162">Uses</text>
+
+  <polygon class="relation" points="470,500 520,450 570,500 520,550" />
+  <text class="relation-text" x="520" y="507">Contains</text>
+
+  <polygon class="relation" points="930,500 980,450 1030,500 980,550" />
+  <text class="relation-text" x="980" y="507">Highlights</text>
+
+  <polygon class="relation" points="725,330 780,275 835,330 780,385" />
+  <text class="relation-text" x="780" y="337">Generates</text>
+
+  <!-- Main lines -->
+  <line class="line" x1="310" y1="155" x2="420" y2="155" />
+  <line class="line" x1="520" y1="155" x2="650" y2="155" />
+
+  <line class="line" x1="800" y1="155" x2="980" y2="155" />
+  <line class="line" x1="1080" y1="155" x2="1190" y2="155" />
+
+  <line class="line" x1="725" y1="190" x2="725" y2="275" />
+  <line class="line" x1="780" y1="385" x2="780" y2="500" />
+  <line class="line" x1="730" y1="610" x2="730" y2="555" />
+
+  <line class="line" x1="470" y1="500" x2="320" y2="500" />
+  <line class="line" x1="250" y1="610" x2="250" y2="500" />
+
+  <line class="line" x1="1030" y1="500" x2="1170" y2="500" />
+  <line class="line" x1="1240" y1="610" x2="1240" y2="500" />
+
+  <!-- Cardinalities -->
+  <text class="card" x="400" y="145">1</text>
+  <text class="card" x="545" y="145">M</text>
+
+  <text class="card" x="960" y="145">M</text>
+  <text class="card" x="1100" y="145">1</text>
+
+  <text class="card" x="300" y="490">1</text>
+  <text class="card" x="445" y="490">M</text>
+
+  <text class="card" x="1050" y="490">1</text>
+  <text class="card" x="1150" y="490">M</text>
+
+  <text class="card" x="715" y="255">1</text>
+  <text class="card" x="715" y="405">1</text>
+
+  <!-- Media attributes -->
+  <ellipse class="attr" cx="130" cy="80" rx="55" ry="22" />
+  <text class="attr-text key" x="130" y="86">media_id</text>
+  <line class="line" x1="168" y1="96" x2="205" y2="120" />
+
+  <ellipse class="attr" cx="95" cy="150" rx="90" ry="24" />
+  <text class="attr-text" x="95" y="156">original_filename</text>
+  <line class="line" x1="185" y1="150" x2="180" y2="150" />
+
+  <ellipse class="attr" cx="70" cy="225" rx="82" ry="24" />
+  <text class="attr-text" x="70" y="231">media_type</text>
+  <line class="line" x1="149" y1="215" x2="195" y2="190" />
+
+  <ellipse class="attr" cx="295" cy="60" rx="88" ry="24" />
+  <text class="attr-text" x="295" y="66">stored_filename</text>
+  <line class="line" x1="285" y1="84" x2="260" y2="120" />
+
+  <!-- Report attributes -->
+  <ellipse class="attr" cx="600" cy="55" rx="58" ry="22" />
+  <text class="attr-text key" x="600" y="61">report_id</text>
+  <line class="line" x1="620" y1="74" x2="675" y2="120" />
+
+  <ellipse class="attr" cx="820" cy="55" rx="58" ry="22" />
+  <text class="attr-text" x="820" y="61">verdict</text>
+  <line class="line" x1="805" y1="75" x2="770" y2="120" />
+
+  <ellipse class="attr" cx="565" cy="250" rx="75" ry="24" />
+  <text class="attr-text" x="565" y="256">confidence</text>
+  <line class="line" x1="635" y1="238" x2="650" y2="190" />
+
+  <ellipse class="attr" cx="725" cy="40" rx="85" ry="24" />
+  <text class="attr-text" x="725" y="46">fake_probability</text>
+  <line class="line" x1="725" y1="64" x2="725" y2="120" />
+
+  <ellipse class="attr" cx="890" cy="250" rx="70" ry="24" />
+  <text class="attr-text" x="890" y="256">risk_level</text>
+  <line class="line" x1="840" y1="238" x2="800" y2="190" />
+
+  <!-- Metrics attributes -->
+  <ellipse class="attr" cx="1140" cy="55" rx="62" ry="22" />
+  <text class="attr-text key" x="1140" y="61">metrics_id</text>
+  <line class="line" x1="1160" y1="76" x2="1210" y2="120" />
+
+  <ellipse class="attr" cx="1345" cy="70" rx="76" ry="24" />
+  <text class="attr-text" x="1345" y="76">dataset_name</text>
+  <line class="line" x1="1315" y1="92" x2="1285" y2="120" />
+
+  <ellipse class="attr" cx="1370" cy="145" rx="65" ry="22" />
+  <text class="attr-text" x="1370" y="151">accuracy</text>
+  <line class="line" x1="1305" y1="145" x2="1320" y2="145" />
+
+  <ellipse class="attr" cx="1360" cy="220" rx="86" ry="24" />
+  <text class="attr-text" x="1360" y="226">best_threshold</text>
+  <line class="line" x1="1282" y1="210" x2="1310" y2="186" />
+
+  <!-- Frame score attributes -->
+  <ellipse class="attr" cx="120" cy="760" rx="78" ry="24" />
+  <text class="attr-text key" x="120" y="766">frame_score_id</text>
+  <line class="line" x1="165" y1="742" x2="210" y2="680" />
+
+  <ellipse class="attr" cx="250" cy="790" rx="55" ry="22" />
+  <text class="attr-text" x="250" y="796">frame_no</text>
+  <line class="line" x1="250" y1="768" x2="250" y2="680" />
+
+  <ellipse class="attr" cx="380" cy="760" rx="82" ry="24" />
+  <text class="attr-text" x="380" y="766">fake_probability</text>
+  <line class="line" x1="340" y1="742" x2="300" y2="680" />
+
+  <ellipse class="attr" cx="410" cy="685" rx="100" ry="24" />
+  <text class="attr-text" x="410" y="691">background_probability</text>
+  <line class="line" x1="310" y1="676" x2="320" y2="670" />
+
+  <!-- Detection attributes -->
+  <ellipse class="attr" cx="615" cy="770" rx="65" ry="22" />
+  <text class="attr-text key" x="615" y="776">detect_id</text>
+  <line class="line" x1="650" y1="752" x2="700" y2="680" />
+
+  <ellipse class="attr" cx="730" cy="800" rx="78" ry="24" />
+  <text class="attr-text" x="730" y="806">detect_type</text>
+  <line class="line" x1="730" y1="776" x2="730" y2="680" />
+
+  <ellipse class="attr" cx="850" cy="770" rx="50" ry="22" />
+  <text class="attr-text" x="850" y="776">date</text>
+  <line class="line" x1="810" y1="752" x2="760" y2="680" />
+
+  <ellipse class="attr" cx="905" cy="695" rx="48" ry="22" />
+  <text class="attr-text" x="905" y="701">time</text>
+  <line class="line" x1="860" y1="688" x2="800" y2="670" />
+
+  <!-- Key frame attributes -->
+  <ellipse class="attr" cx="1125" cy="770" rx="75" ry="24" />
+  <text class="attr-text key" x="1125" y="776">key_frame_id</text>
+  <line class="line" x1="1160" y1="748" x2="1210" y2="680" />
+
+  <ellipse class="attr" cx="1240" cy="800" rx="55" ry="22" />
+  <text class="attr-text" x="1240" y="806">label</text>
+  <line class="line" x1="1240" y1="778" x2="1240" y2="680" />
+
+  <ellipse class="attr" cx="1380" cy="770" rx="82" ry="24" />
+  <text class="attr-text" x="1380" y="776">frame_no</text>
+  <line class="line" x1="1325" y1="752" x2="1275" y2="680" />
+
+  <ellipse class="attr" cx="1385" cy="690" rx="104" ry="24" />
+  <text class="attr-text" x="1385" y="696">thumbnail_path</text>
+  <line class="line" x1="1310" y1="680" x2="1310" y2="680" />
+
+  <text class="caption" x="810" y="900">Fig.5.4 ER diagram of Deepfake Detection Portal</text>
+</svg>

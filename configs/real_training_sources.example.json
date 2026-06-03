@@ -1,0 +1,14 @@
+{
+  "real_image_dirs": [
+    "D:/datasets/real_images"
+  ],
+  "fake_image_dirs": [
+    "D:/datasets/ai_images"
+  ],
+  "real_video_dirs": [
+    "D:/datasets/real_videos"
+  ],
+  "fake_video_dirs": [
+    "D:/datasets/fake_videos"
+  ]
+}
